@@ -40,8 +40,8 @@
             ;
 
         col-gpios
-            = <&gpio0 10 GPIO_ACTIVE_HIGH> // Col 1 R (most left)
-            , <&gpio0  9 GPIO_ACTIVE_HIGH> // Col 2 
+            = <&gpio0 29 GPIO_ACTIVE_HIGH> // Col 1 R (most left)
+            , <&gpio0 28 GPIO_ACTIVE_HIGH> // Col 2 
             , <&gpio0 20 GPIO_ACTIVE_HIGH> // Col 3
             , <&gpio0 17 GPIO_ACTIVE_HIGH> // Col 4 
             , <&gpio0 15 GPIO_ACTIVE_HIGH> // Col 5
