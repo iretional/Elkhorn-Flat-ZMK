@@ -20,7 +20,3 @@
 include:
   - board: elkhorn_flat_v1_left
   - board: elkhorn_flat_v1_right
-  - board: elkhorn_flat_v1_left
-    shield: settings_reset
-  - board: elkhorn_flat_v1_right
-    shield: settings_reset

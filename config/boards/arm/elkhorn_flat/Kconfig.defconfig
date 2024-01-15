@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 #
 
-if BOARD_ELKHORN_FLAT_LEFT
+if BOARD_ELKHORN_FLAT_RIGHT
 
 config ZMK_KEYBOARD_NAME
     default "Elkhorn Flat"
