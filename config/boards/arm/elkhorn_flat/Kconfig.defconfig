@@ -25,14 +25,6 @@ config ZMK_SPLIT
 config BT_CTLR
     default BT
 
-config ZMK_BLE
-    default y
-
-config ZMK_USB
-    default y
-    
-config PINMUX
-    default y
 
 if USB
 
