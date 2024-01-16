@@ -25,7 +25,6 @@ config ZMK_SPLIT
 config BT_CTLR
     default BT
 
-
 if USB
 
 config USB_NRFX
