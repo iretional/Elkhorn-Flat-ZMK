@@ -84,16 +84,17 @@
             bindings = <&mo 1>, <&mo 9>;
         };
 
-        ht_6: behavior_ht_6{
+        ht_6: hold_tap_ht_6{
             compatible = "zmk,behavior-hold-tap";
-            label = "ht_6";
+            label = "HOLD_TAB_HT_6";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <600>;
             bindings = <&kp>, <&kp>;
         };
-        minbar: minus_underbar {
+        minbar: mod_morph_minus_underbar {
             compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_MINUS_UNDERBAR";
             #binding-cells = <0>;
             bindings = <&kp KP_MINUS>, <&kp UNDERSCORE>;
             mods = <(MOD_LSFT)>;
