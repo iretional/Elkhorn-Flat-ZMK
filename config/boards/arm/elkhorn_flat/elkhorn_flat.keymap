@@ -266,8 +266,8 @@
             bindings = <
 &kp TAB   &none     &none     &none     &none     &none         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &kp LCTRL &none     &kp ESC   &kp RET   &kp BSPC  &kp DEL       &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp LSH   &none     &knone    &none     &none     &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &knone    &knone    &none     &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+&kp LSH   &none     &none    &none     &none     &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &none    &none    &none     &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -331,7 +331,7 @@
             >;
         };
     };
-
+s
     macros {
         ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
             &bt BT_SEL 0  &bt BT_CLR &bt BT_SEL 1  &bt BT_CLR &bt BT_SEL 2  &bt BT_CLR 
