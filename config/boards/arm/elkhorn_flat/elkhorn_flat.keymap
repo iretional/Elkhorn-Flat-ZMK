@@ -29,15 +29,6 @@
 
 
 
-&mmv {
-    time-to-max-speed-ms = <0>;
-    acceleration-exponent=<0>;
-};
-
-&mwh {
-    time-to-max-speed-ms = <0>;
-    acceleration-exponent=<0>;
-};
 &mt {
     tapping-term-ms = <100>;
 }; 
