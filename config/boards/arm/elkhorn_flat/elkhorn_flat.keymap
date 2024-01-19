@@ -275,5 +275,5 @@
                     &trans    &trans    &trans    &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
-
+    };
 };
