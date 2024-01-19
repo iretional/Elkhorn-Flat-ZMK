@@ -70,6 +70,7 @@
     };
 };
 
+
 / {
     behaviors {
         td_1t9: tap_dance_one_to_nine_layer {
@@ -248,7 +249,7 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &none
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &bt BTC0  &bt BTC1  &bt BTC2  &bt BTC3  &bt BTC4    &BTAllClr
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
 &kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &none     &none     
           &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
@@ -329,5 +330,18 @@
           &trans    &trans    &trans    &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
+    };
+
+    macros {
+        ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
+            &bt BT0  &bt BT_CLR &bt BT1  &bt BT_CLR &bt BT2  &bt BT_CLR 
+            &bt BT3  &bt BT_CLR &bt BT4  &bt BT_CLR >;)
+            
+        ZMK_MACRO(BTC0, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT0  &bt BT_CLR >;)
+        ZMK_MACRO(BTC1, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT1  &bt BT_CLR >;)
+        ZMK_MACRO(BTC2, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT2  &bt BT_CLR >;)
+        ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT3  &bt BT_CLR >;)
+        ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT4  &bt BT_CLR >;)
+        
     };
 };
