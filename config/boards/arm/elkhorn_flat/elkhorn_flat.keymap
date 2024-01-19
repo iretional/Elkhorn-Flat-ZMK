@@ -15,10 +15,12 @@
 #define LSH LSHFT 
 #define SPC SPACE
 
-#define VOL_DN C_VOL_DN
-#define VOL_UP C_VOL_UP
+#define VMT C_MUTE
+#define VDN C_VOL_DN
+#define VUP C_VOL_UP
 
 #define KPNL KP_NUM
+#define KRET KP_ENTER
 #define KMUL KP_MULTIPLY
 #define KDIV KP_DIVIDE
 #define KPLS KP_PLUS
@@ -99,6 +101,63 @@
             bindings = <&kp KP_MINUS>, <&kp UNDERSCORE>;
             mods = <(MOD_LSFT)>;
         };
+        
+        mm_mu: mod_morph_mouse_up {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_MOUSE_UP";
+            #binding-cells = <0>;
+            bindings = <&kp MVU>, <&kp MVUU>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_md: mod_morph_mouse_down {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_MOUSE_DOWN";
+            #binding-cells = <0>;
+            bindings = <&kp MVD>, <&kp MVDD>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_ml: mod_morph_mouse_left {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_MOUSE_LEFT";
+            #binding-cells = <0>;
+            bindings = <&kp MVL>, <&kp MVLL>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_mr: mod_morph_mouse_right {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_MOUSE_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&kp MVR>, <&kp MVRR>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_sru: mod_morph_scroll_up {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_SCROLL_UP";
+            #binding-cells = <0>;
+            bindings = <&kp SRU>, <&kp SRUU>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_srd: mod_morph_scroll_down {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_SCROLL_DOWN";
+            #binding-cells = <0>;
+            bindings = <&kp SRD>, <&kp SRDD>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_srl: mod_morph_scroll_left {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_SCROLL_LEFT";
+            #binding-cells = <0>;
+            bindings = <&kp SRL>, <&kp SRLL>;
+            mods = <(MOD_LALT)>;
+        };
+        mm_srr: mod_morph_scroll_right {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_SCROLL_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&kp SRR>, <&kp SRRR>;
+            mods = <(MOD_LALT)>;
+        };
     };
     
     conditional_layers {
@@ -133,10 +192,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &td_1t9 &mo 2      &mo 4   &mo 3     &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp LGUI  &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &mo 3     &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -148,10 +207,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                     &kp F1    &kp F2    &kp F3    &kp F4      &kp F5      &kp F6
-&trans    &kp N6    &kp N7    &kp N8    &kp N9    &kp KN0                    &kp F7    &kp F8    &kp F9    &kp F10     &kp F11     &kp F12
-&trans    &kp KDIV  &kp KMUL  &kp KPLS  &minbar   &kp KDOT                   &kp B     &kp N     &kp M     &kp DOT     &kp BSLH    &kp ESC
-                    &kp CAPS  &kp KPNL  &kp SPACE &trans  &trans     &trans  &trans    &kp KP_ENTER   &kp LSH   &kp RCTRL
+&kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6
+&trans    &kp N6    &kp N7    &kp N8    &kp N9    &kp KN0        &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+&trans    &kp KDIV  &kp KMUL  &kp KPLS  &minbar   &kp KDOT       &kp VDN   &kp VUP   &kp VMT   &none     &none     &none
+          &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &kp LSH   &kp RCTRL
             >;
         };
 
@@ -164,10 +223,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |    
 */
             bindings = <
-&kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp SQT   &kp A     &kp S     &kp D     &kp J     &kp H                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp RALT  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp SQT   &kp A     &kp S     &kp D     &kp J     &kp H         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
         
@@ -179,10 +238,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |  
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp ESC   &mm_sru   &mm_mu    &mm_srd   &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp LALT  &mm_ml    &mm_md    &mm_mr    &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp DEL   &mm_srl   &kp M     &mm_srr   &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RCLK  &kp MCLK  &kp LCLK &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -195,10 +254,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
         
@@ -210,10 +269,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp ESC   &kp ESC   &kp RET   &kp BSPC  &kp DEL                    &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -225,10 +284,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -240,10 +299,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -255,10 +314,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T                      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G                      &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V                      &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &kp LGUI  &kp LALT  &kp SPACE &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -270,10 +329,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&trans    &kp Q     &kp HOME  &kp UP    &kp END   &kp MCLK                   &kp Y     &kp U     &kp I     &kp O       &kp P       &kp BSPC
-&trans    &kp A     &kp LEFT  &kp DOWN  &kp RIGHT &kp LCLK                   &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
-&trans    &kp COMMA &kp Z     &kp X     &kp C     &kp RCLK                   &kp B     &kp N     &kp M     &kp DOT     &kp FSLH    &kp ESC
-                    &trans    &trans    &trans    &trans  &trans     &trans  &trans    &kp RET   &kp LSH   &kp RALT
+&trans    &kp ESC   &kp HOME  &kp UP    &kp END   &kp MCLK      &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&trans    &kp BSPC  &kp LEFT  &kp DOWN  &kp RIGHT &kp LCLK      &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&trans    &kp DEL   &kp PG_UP &kp RET   &kp PG_DN &kp RCLK      &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &trans    &trans    &trans    &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
     };
