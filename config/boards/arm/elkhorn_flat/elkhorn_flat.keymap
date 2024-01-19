@@ -334,14 +334,14 @@
 
     macros {
         ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
-            &bt BT0  &bt BT_CLR &bt BT1  &bt BT_CLR &bt BT2  &bt BT_CLR 
-            &bt BT3  &bt BT_CLR &bt BT4  &bt BT_CLR >;)
+            &bt BT_SEL 0  &bt BT_CLR &bt BT_SEL 1  &bt BT_CLR &bt BT_SEL 2  &bt BT_CLR 
+            &bt BT_SEL 3  &bt BT_CLR &bt BT_SEL 4  &bt BT_CLR >;)
             
-        ZMK_MACRO(BTC0, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT0  &bt BT_CLR >;)
-        ZMK_MACRO(BTC1, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT1  &bt BT_CLR >;)
-        ZMK_MACRO(BTC2, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT2  &bt BT_CLR >;)
-        ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT3  &bt BT_CLR >;)
-        ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT4  &bt BT_CLR >;)
+        ZMK_MACRO(BTC0, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 0  &bt BT_CLR >;)
+        ZMK_MACRO(BTC1, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 1  &bt BT_CLR >;)
+        ZMK_MACRO(BTC2, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 2  &bt BT_CLR >;)
+        ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 3  &bt BT_CLR >;)
+        ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 4  &bt BT_CLR >;)
         
     };
 };
