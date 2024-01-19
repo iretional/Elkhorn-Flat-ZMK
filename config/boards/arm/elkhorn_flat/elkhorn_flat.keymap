@@ -34,6 +34,12 @@
 #define BT3 BT_SEL 3
 #define BT4 BT_SEL 4
 
+#define BTC0 BT_DISC 0
+#define BTC1 BT_DISC 1
+#define BTC2 BT_DISC 2
+#define BTC3 BT_DISC 3
+#define BTC4 BT_DISC 4
+
 #define MVU MOVE_VERT(-200)
 #define MVD MOVE_VERT(200)
 #define MVL MOVE_HOR(-200)
@@ -210,7 +216,7 @@
 &kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6
 &trans    &kp N6    &kp N7    &kp N8    &kp N9    &kp KN0        &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 &trans    &kp KDIV  &kp KMUL  &kp KPLS  &minbar   &kp KDOT       &kp VDN   &kp VUP   &kp VMT   &none     &none     &none
-          &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &kp LSH   &kp RCTRL
+          &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &trans    &trans
             >;
         };
 
@@ -226,7 +232,7 @@
 &kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &kp SQT   &kp A     &kp S     &kp D     &kp J     &kp H         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
 &kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &trans    &trans   &trans
             >;
         };
         
@@ -238,10 +244,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |  
 */
             bindings = <
-&kp TAB   &kp ESC   &mm_sru   &mm_mu    &mm_srd   &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &kp LALT  &mm_ml    &mm_md    &mm_mr    &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp LSH   &kp DEL   &mm_srl   &kp M     &mm_srr   &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &mkp RCLK &mkp MCLK &mkp LCLK &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp ESC   &mm_sru   &mm_mu    &mm_srd   &none         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp LALT  &mm_ml    &mm_md    &mm_mr    &none         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp DEL   &mm_srl   &kp M     &mm_srr   &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &mkp RCLK &mkp MCLK &mkp LCLK &trans    &trans        &trans    &trans    &trans    &trans    &trans
             >;
         };
 
@@ -254,10 +260,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &bt BTC0  &bt BTC1  &bt BTC2  &bt BTC3  &bt BTC4  &bt BT_CLR_ALL
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT0   &bt BT1   &bt BT2   &bt BT3   &bt BT4   &none
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &none     &none     
+          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
             >;
         };
         
@@ -269,10 +275,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+&kp TAB   &none     &none     &none     &none     &none         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &none     &kp ESC   &kp RET   &kp BSPC  &kp DEL       &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &none     &knone    &none     &none     &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+          &knone    &knone    &none     &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -287,7 +293,7 @@
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
 &kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -302,7 +308,7 @@
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
 &kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -317,7 +323,7 @@
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
 &kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
