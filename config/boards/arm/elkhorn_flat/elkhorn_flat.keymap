@@ -331,7 +331,7 @@
             >;
         };
     };
-s
+
     macros {
         ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
             &bt BT_SEL 0  &bt BT_CLR &bt BT_SEL 1  &bt BT_CLR &bt BT_SEL 2  &bt BT_CLR 
