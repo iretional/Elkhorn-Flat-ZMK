@@ -11,7 +11,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
 
-
 #define LSH LSHFT 
 #define SPC SPACE
 
@@ -28,22 +27,6 @@
 #define KCOM KP_COMMA
 #define KN0 KP_N0
 
-#define MVU MOVE_VERT(-200)
-#define MVD MOVE_VERT(200)
-#define MVL MOVE_HOR(-200)
-#define MVR MOVE_HOR(200)
-#define MVUU MOVE_VERT(-900)
-#define MVDD MOVE_VERT(900)
-#define MVLL MOVE_HOR(-900)
-#define MVRR MOVE_HOR(900)
-#define SRU SCROLL_VERT(10)
-#define SRD SCROLL_VERT(-10)
-#define SRL SCROLL_HOR(-10)
-#define SRR SCROLL_HOR(10)
-#define SRUU SCROLL_VERT(18)
-#define SRDD SCROLL_VERT(-18)
-#define SRLL SCROLL_HOR(-18)
-#define SRRR SCROLL_HOR(18)
 
 
 &mmv {
@@ -97,62 +80,6 @@
             mods = <(MOD_LSFT)>;
         };
         
-        mm_mu: mod_morph_mouse_up {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_MOUSE_UP";
-            #binding-cells = <0>;
-            bindings = <&mmv MVU>, <&mmv MVUU>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_md: mod_morph_mouse_down {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_MOUSE_DOWN";
-            #binding-cells = <0>;
-            bindings = <&mmv MVD>, <&mmv MVDD>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_ml: mod_morph_mouse_left {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_MOUSE_LEFT";
-            #binding-cells = <0>;
-            bindings = <&mmv MVL>, <&mmv MVLL>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mr: mod_morph_mouse_right {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_MOUSE_RIGHT";
-            #binding-cells = <0>;
-            bindings = <&mmv MVR>, <&mmv MVRR>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_sru: mod_morph_scroll_up {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_SCROLL_UP";
-            #binding-cells = <0>;
-            bindings = <&mmv SRU>, <&mmv SRUU>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_srd: mod_morph_scroll_down {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_SCROLL_DOWN";
-            #binding-cells = <0>;
-            bindings = <&mmv SRD>, <&mmv SRDD>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_srl: mod_morph_scroll_left {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_SCROLL_LEFT";
-            #binding-cells = <0>;
-            bindings = <&mmv SRL>, <&mmv SRLL>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_srr: mod_morph_scroll_right {
-            compatible = "zmk,behavior-mod-morph";
-            label="MOD_MORPH_SCROLL_RIGHT";
-            #binding-cells = <0>;
-            bindings = <&mmv SRR>, <&mmv SRRR>;
-            mods = <(MOD_LALT)>;
-        };
     };
     
     conditional_layers {
@@ -233,9 +160,9 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |  
 */
             bindings = <
-&kp TAB   &kp ESC   &mm_sru   &mm_mu    &mm_srd   &none         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &kp LALT  &mm_ml    &mm_md    &mm_mr    &none         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp LSH   &kp DEL   &mm_srl   &kp M     &mm_srr   &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+&kp TAB   &kp ESC   &none     &none     &none     &none         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&kp LCTRL &kp LALT  &none     &none     &none     &none         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&kp LSH   &kp DEL   &none     &none     &none     &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
           &mkp RCLK &mkp MCLK &mkp LCLK &trans    &trans        &trans    &trans    &trans    &trans    &trans
             >;
         };
