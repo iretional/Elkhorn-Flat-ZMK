@@ -28,10 +28,6 @@
 #define KCOM KP_COMMA
 #define KN0 KP_N0
 
-#define BTS BT_SEL
-
-#define BTC BT_DISC
-
 #define MVU MOVE_VERT(-200)
 #define MVD MOVE_VERT(200)
 #define MVL MOVE_HOR(-200)
@@ -252,8 +248,8 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &bt BTC 0  &bt BTC 1  &bt BTC 2  &bt BTC 3  &bt BTC 4  &bt BT_CLR_ALL
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BTS 0   &bt BTS 1   &bt BTS 2   &bt BTS 3   &bt BTS 4   &none
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
 &kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &none     &none     
           &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
             >;
