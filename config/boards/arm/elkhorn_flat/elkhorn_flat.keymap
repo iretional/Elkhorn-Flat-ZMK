@@ -119,7 +119,7 @@
             then-layer = <8>;
         };
     };
-};
+
 
     keymap {
         compatible = "zmk,keymap";
