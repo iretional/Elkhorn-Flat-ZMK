@@ -169,7 +169,7 @@
             bindings = <
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &BTC0  &BTC1  &BTC2  &BTC3  &BTC4    &BTAllClr
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &none     &none     
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
           &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
             >;
         };
