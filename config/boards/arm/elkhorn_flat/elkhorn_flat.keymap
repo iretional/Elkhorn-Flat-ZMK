@@ -106,56 +106,56 @@
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_MOUSE_UP";
             #binding-cells = <0>;
-            bindings = <&kp MVU>, <&kp MVUU>;
+            bindings = <&mmv MVU>, <&mmv MVUU>;
             mods = <(MOD_LALT)>;
         };
         mm_md: mod_morph_mouse_down {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_MOUSE_DOWN";
             #binding-cells = <0>;
-            bindings = <&kp MVD>, <&kp MVDD>;
+            bindings = <&mmv MVD>, <&mmv MVDD>;
             mods = <(MOD_LALT)>;
         };
         mm_ml: mod_morph_mouse_left {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_MOUSE_LEFT";
             #binding-cells = <0>;
-            bindings = <&kp MVL>, <&kp MVLL>;
+            bindings = <&mmv MVL>, <&mmv MVLL>;
             mods = <(MOD_LALT)>;
         };
         mm_mr: mod_morph_mouse_right {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_MOUSE_RIGHT";
             #binding-cells = <0>;
-            bindings = <&kp MVR>, <&kp MVRR>;
+            bindings = <&mmv MVR>, <&mmv MVRR>;
             mods = <(MOD_LALT)>;
         };
         mm_sru: mod_morph_scroll_up {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_SCROLL_UP";
             #binding-cells = <0>;
-            bindings = <&kp SRU>, <&kp SRUU>;
+            bindings = <&mmv SRU>, <&mmv SRUU>;
             mods = <(MOD_LALT)>;
         };
         mm_srd: mod_morph_scroll_down {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_SCROLL_DOWN";
             #binding-cells = <0>;
-            bindings = <&kp SRD>, <&kp SRDD>;
+            bindings = <&mmv SRD>, <&mmv SRDD>;
             mods = <(MOD_LALT)>;
         };
         mm_srl: mod_morph_scroll_left {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_SCROLL_LEFT";
             #binding-cells = <0>;
-            bindings = <&kp SRL>, <&kp SRLL>;
+            bindings = <&mmv SRL>, <&mmv SRLL>;
             mods = <(MOD_LALT)>;
         };
         mm_srr: mod_morph_scroll_right {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_SCROLL_RIGHT";
             #binding-cells = <0>;
-            bindings = <&kp SRR>, <&kp SRRR>;
+            bindings = <&mmv SRR>, <&mmv SRRR>;
             mods = <(MOD_LALT)>;
         };
     };
@@ -241,7 +241,7 @@
 &kp TAB   &kp ESC   &mm_sru   &mm_mu    &mm_srd   &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &kp LCTRL &kp LALT  &mm_ml    &mm_md    &mm_mr    &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
 &kp LSH   &kp DEL   &mm_srl   &kp M     &mm_srr   &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
-          &kp RCLK  &kp MCLK  &kp LCLK &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
+          &mkp RCLK &mkp MCLK &mkp LCLK &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
 
@@ -329,9 +329,9 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
-&trans    &kp ESC   &kp HOME  &kp UP    &kp END   &kp MCLK      &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&trans    &kp BSPC  &kp LEFT  &kp DOWN  &kp RIGHT &kp LCLK      &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&trans    &kp DEL   &kp PG_UP &kp RET   &kp PG_DN &kp RCLK      &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
+&trans    &kp ESC   &kp HOME  &kp UP    &kp END   &mkp MCLK     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&trans    &kp BSPC  &kp LEFT  &kp DOWN  &kp RIGHT &mkp LCLK     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&trans    &kp DEL   &kp PG_UP &kp RET   &kp PG_DN &mkp RCLK     &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp ESC
           &trans    &trans    &trans    &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &kp RALT
             >;
         };
