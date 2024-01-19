@@ -41,7 +41,7 @@
 #define MVUU MOVE_VERT(-900)
 #define MVDD MOVE_VERT(900)
 #define MVLL MOVE_HOR(-900)
-#define MVRR_R9 MOVE_HOR(900)
+#define MVRR MOVE_HOR(900)
 #define SRU SCROLL_VERT(10)
 #define SRD SCROLL_VERT(-10)
 #define SRL SCROLL_HOR(-10)
