@@ -126,7 +126,7 @@
           &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &trans    &trans
             >;
         };
-
+        
 
         left_two_layer { //2
 /* --------------------------------------------------------------------------------
