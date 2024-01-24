@@ -11,6 +11,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
 
+#define LSH LSHFT 
 #define SH LSHFT 
 #define CT LCTRL 
 #define AL LALT
