@@ -14,7 +14,9 @@
 #define LSH LSHFT 
 #define SH LSHFT 
 #define CT LCTRL 
+#define RCT RCTRL 
 #define AL LALT
+#define RAL RALT
 #define GU LGUI
 #define SPC SPACE
 
@@ -48,7 +50,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAB_HOME_ROW";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <195>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -120,9 +122,9 @@
 */
             bindings = <
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &hm GU A  &hm AL S  &hm SH D  &hm CT F  &kp G         &kp H     &hm CT J  &hm SH K  &hm AL L  &hm GU SEMI  &kp SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp RALT
-          &kp LGUI  &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &mo 3     &kp RET   &kp LSH   &kp DEL
+&kp LCTRL &hm GU A  &hm AL S  &hm CT D  &hm SH F  &kp G         &kp H     &hm SH J  &hm CT K  &hm AL L  &hm RAL SEMI &hm RCT SQT
+&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp DEL
+          &none     &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &mo 3     &kp RET   &kp BSPC  &none
             >;
         };
 
@@ -136,8 +138,8 @@
             bindings = <
 &kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6
 &trans    &kp N6    &kp N7    &kp N8    &kp N9    &kp KP_N0      &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&trans    &kp KDIV  &kp KMUL  &plseql   &minbar   &kp KP_DOT     &kp VDN   &kp VUP   &kp VMT   &none     &kp BSLH  &kp RCTRL
-          &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &trans    &trans
+&trans    &kp KDIV  &kp KMUL  &plseql   &minbar   &kp KP_DOT     &kp VDN   &kp VUP   &kp VMT   &none     &kp BSLH  &trans
+          &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &trans    &none
             >;
         };
         
@@ -211,10 +213,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
-          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &trans
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &BTC0  &BTC1  &BTC2  &BTC3  &BTC4    &BTAllClr
+&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
+&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
+          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
             >;
         };
 
