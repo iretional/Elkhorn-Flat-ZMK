@@ -83,15 +83,6 @@
             tapping-term-ms = <280>;
             bindings = <&mo 3>, <&mo 10>;
         };
-
-        ht_6: hold_tap_ht_6{
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAB_HT_6";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <600>;
-            bindings = <&kp>, <&kp>;
-        };
         minbar: mod_morph_minus_underbar {
             compatible = "zmk,behavior-mod-morph";
             label="MOD_MORPH_MINUS_UNDERBAR";
@@ -141,35 +132,39 @@
         ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 4  &bt BT_CLR >;)
         
     };
+    combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <2 3>;
+            layers = <0 1>;
+            bindings = <&kp ESC>;
+        };
+        combo_del {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <3 4>;
+            layers = <0 1>;
+            bindings = <&kp DEL>;
+        };
+        combo_enter {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <14 15>;
+            layers = <0 1>;
+            bindings = <&kp RET>;
+        };
+        combo_bspc {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <15 16>;
+            layers = <0 1>;
+            bindings = <&kp BSPC>;
+        };
+    };
 
-    combo_esc {
-      timeout-ms = <COMBO_TERM_FAST>;
-      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-      key-positions = <2 3>;
-      layers = <0 1>;
-      bindings = <&kp ESC>;
-    };
-    combo_del {
-      timeout-ms = <COMBO_TERM_FAST>;
-      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-      key-positions = <3 4>;
-      layers = <0 1>;
-      bindings = <&kp DEL>;
-    };
-    combo_enter {
-      timeout-ms = <COMBO_TERM_FAST>;
-      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-      key-positions = <14 15>;
-      layers = <0 1>;
-      bindings = <&kp RET>;
-    };
-    combo_bspc {
-      timeout-ms = <COMBO_TERM_FAST>;
-      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-      key-positions = <15 16>;
-      layers = <0 1>;
-      bindings = <&kp BSPC>;
-    };
+    
 
 
     keymap {
