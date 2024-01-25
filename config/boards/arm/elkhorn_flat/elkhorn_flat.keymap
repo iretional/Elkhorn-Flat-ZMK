@@ -31,6 +31,15 @@
 #define KPLS KP_PLUS
 #define KCOM KP_COMMA
 
+#define SM SEMI
+
+#define HM_TAPPING_TERM 300
+#define HM_TAPPING_TERM_FAST 200
+#define HM_PRIOR_IDLE 150
+
+#define COMBO_TERM_FAST 35
+#define COMBO_TERM_SLOW 40
+#define COMBO_PRIOR_IDLE 100
 
 
 &mt {
@@ -50,21 +59,14 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAB_HOME_ROW";
             #binding-cells = <2>;
-            tapping-term-ms = <165>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+            
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+
         };
 
-        bhm: balanced_homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAB_BALANCED_HOME_ROW";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;    // <---[[moderate duration]]
-            quick-tap-ms = <0>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-        };
 
         td_1t9: tap_dance_one_to_nine_layer {
             compatible = "zmk,behavior-tap-dance";
@@ -72,6 +74,13 @@
             #binding-cells = <0>;
             tapping-term-ms = <280>;
             bindings = <&mo 1>, <&mo 9>;
+        };
+        td_3t10: tap_dance_one_to_nine_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_ONE_TO_NINE_LAYER";
+            #binding-cells = <0>;
+            tapping-term-ms = <280>;
+            bindings = <&mo 3>, <&mo 10>;
         };
 
         ht_6: hold_tap_ht_6{
@@ -119,12 +128,59 @@
         };
     };
 
+    macros {
+        ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
+            &bt BT_SEL 0  &bt BT_CLR &bt BT_SEL 1  &bt BT_CLR &bt BT_SEL 2  &bt BT_CLR 
+            &bt BT_SEL 3  &bt BT_CLR &bt BT_SEL 4  &bt BT_CLR >;)
+            
+        ZMK_MACRO(BTC0, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 0  &bt BT_CLR >;)
+        ZMK_MACRO(BTC1, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 1  &bt BT_CLR >;)
+        ZMK_MACRO(BTC2, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 2  &bt BT_CLR >;)
+        ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 3  &bt BT_CLR >;)
+        ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 4  &bt BT_CLR >;)
+        
+    };
+
+    combo_esc {
+      timeout-ms = <COMBO_TERM_FAST>;
+      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+      key-positions = <2 3>;
+      layers = <0 1>;
+      bindings = <&kp ESC>;
+    };
+    combo_del {
+      timeout-ms = <COMBO_TERM_FAST>;
+      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+      key-positions = <3 4>;
+      layers = <0 1>;
+      bindings = <&kp DEL>;
+    };
+    combo_enter {
+      timeout-ms = <COMBO_TERM_FAST>;
+      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+      key-positions = <14 15>;
+      layers = <0 1>;
+      bindings = <&kp RET>;
+    };
+    combo_bspc {
+      timeout-ms = <COMBO_TERM_FAST>;
+      require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+      key-positions = <15 16>;
+      layers = <0 1>;
+      bindings = <&kp BSPC>;
+    };
+
 
     keymap {
         compatible = "zmk,keymap";
         
         default_layer {
 /* --------------------------------------------------------------------------------
+// | 0  | 1  | 2  | 3  | 4  | 5  |      | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 |      | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 |      | 30 | 31 | 32 | 33 | 34 | 35 |
+//      | 36 | 37 | 38 | 39 | 40 |      | 41 | 42 | 43 | 44 | 45 |
+
 // |  TAB |  Q   |  W   |  E   |  R   |  T   |                     |  Y   |  U   |  I   |  O   |  P   | BKSP |
 // | CTRL |  A   |  S   |  D   |  F   |  G   |                     |  H   |  J   |  K   |  L   |  ;   |  '   |
 // | SHFT |  Z   |  X   |  C   |  V   |  B   |                     |  N   |  M   |  ,   |  .   |  /   | ESC  |
@@ -132,9 +188,9 @@
 */
             bindings = <
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &hm GU A  &hm AL S  &hm CT D  &bhm SH F  &kp G         &kp H     &bhm SH J  &hm CT K  &hm AL L  &hm RAL SEMI &hm RCT SQT
+&kp LCTRL &hm GU A  &hm AL S  &hm CT D  &hm SH F  &kp G         &kp H     &hm SH J &hm CT K  &hm AL L  &hm RAL SM &hm RCT SQT
 &kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp DEL
-          &none     &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &mo 3     &kp RET   &kp BSPC  &none
+          &none     &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &td_3t10  &kp RET   &kp BSPC  &none
             >;
         };
 
@@ -146,9 +202,9 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6
-&trans    &kp N6    &kp N7    &kp N8    &kp N9    &kp KP_N0      &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&trans    &kp KDIV  &kp KMUL  &plseql   &minbar   &kp KP_DOT     &kp VDN   &kp VUP   &kp VMT   &none     &kp BSLH  &trans
+&kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp F1    &kp F2    &kp F3    &kp F4    &kp MINUS &trans
+&trans    &kp N6    &hm AL N7 &hm CT N8 &hm SH N9 &kp KP_N0      &kp F5    &hm SH F6 &hm CT F7 &hm AL F8 &hm RAL EQUAL &trans
+&trans    &kp KDIV  &kp KMUL  &plseql   &minbar   &kp KP_DOT     &kp F9    &kp F10   &kp F11   &kp F12   &kp BSLH  &trans
           &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &trans    &none
             >;
         };
@@ -162,10 +218,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |    
 */
             bindings = <
-&kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp SQT   &kp A     &kp S     &kp D     &kp J     &kp H         &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-&kp RALT  &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
-          &kp RALT  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &trans    &trans   &trans
+&kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y       &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&hm RCT SQT &hm RAL SM &hm AL L &hm CT K &hm SH J &kp H      &kp H     &kp J     &kp K     &kp L     &kp SM  &kp SQT
+&kp DEL   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B       &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
+          &trans  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &trans    &trans   &trans
             >;
         };
         
@@ -268,6 +324,22 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
 */
             bindings = <
+&trans    &kp ESC   &kp HOME  &kp UP    &kp END   &kp PG_UP     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&trans    &none     &kp LEFT  &kp DOWN  &kp RIGHT &kp PG_DN     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+&trans    &none     &none     &none     &none     &none         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
+          &trans    &trans    &trans    &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &trans
+            >;
+        };
+
+        
+        right_one_double_layer {
+/* --------------------------------------------------------------------------------
+// |  TAB |  Q   |  W   |  E   |  R   |  T   |                     |  Y   |  U   |  I   |  O   |  P   | BKSP |
+// | CTRL |  A   |  S   |  D   |  F   |  G   |                     |  H   |  J   |  K   |  L   |  ;   |  '   |
+// | SHFT |  Z   |  X   |  C   |  V   |  B   |                     |  N   |  M   |  ,   |  .   |  /   | ESC  |
+//               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |     
+*/
+            bindings = <
 &trans    &kp ESC   &kp HOME  &kp UP    &kp END   &mkp MCLK     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
 &trans    &kp BSPC  &kp LEFT  &kp DOWN  &kp RIGHT &mkp LCLK     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
 &trans    &kp DEL   &kp PG_UP &kp RET   &kp PG_DN &mkp RCLK     &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
@@ -276,16 +348,5 @@
         };
     };
 
-    macros {
-        ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
-            &bt BT_SEL 0  &bt BT_CLR &bt BT_SEL 1  &bt BT_CLR &bt BT_SEL 2  &bt BT_CLR 
-            &bt BT_SEL 3  &bt BT_CLR &bt BT_SEL 4  &bt BT_CLR >;)
-            
-        ZMK_MACRO(BTC0, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 0  &bt BT_CLR >;)
-        ZMK_MACRO(BTC1, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 1  &bt BT_CLR >;)
-        ZMK_MACRO(BTC2, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 2  &bt BT_CLR >;)
-        ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 3  &bt BT_CLR >;)
-        ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 4  &bt BT_CLR >;)
-        
-    };
+    
 };
