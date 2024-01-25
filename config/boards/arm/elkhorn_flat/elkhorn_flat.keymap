@@ -75,9 +75,9 @@
             tapping-term-ms = <280>;
             bindings = <&mo 1>, <&mo 9>;
         };
-        td_3t10: tap_dance_one_to_nine_layer {
+        td_3t10: tap_dance_three_to_ten_layer {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_ONE_TO_NINE_LAYER";
+            label = "TAP_DANCE_THREE_TO_TEN_LAYER";
             #binding-cells = <0>;
             tapping-term-ms = <280>;
             bindings = <&mo 3>, <&mo 10>;
