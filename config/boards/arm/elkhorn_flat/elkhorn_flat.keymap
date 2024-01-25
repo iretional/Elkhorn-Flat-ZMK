@@ -65,6 +65,7 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
 
+            bindings = <&kp>, <&kp>;
         };
 
 
