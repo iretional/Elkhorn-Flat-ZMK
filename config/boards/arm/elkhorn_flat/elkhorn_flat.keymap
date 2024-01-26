@@ -35,11 +35,11 @@
 
 #define HM_TAPPING_TERM 300
 #define HM_TAPPING_TERM_FAST 200
-#define HM_PRIOR_IDLE 0
+#define HM_PRIOR_IDLE 150
 
 #define COMBO_TERM_FAST 35
 #define COMBO_TERM_SLOW 40
-#define COMBO_PRIOR_IDLE 0
+#define COMBO_PRIOR_IDLE 100
 
 
 &mt {
@@ -62,7 +62,7 @@
             
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick-tap-ms = <175>;
+            quick-tap-ms = <0>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
 
             bindings = <&kp>, <&kp>;
