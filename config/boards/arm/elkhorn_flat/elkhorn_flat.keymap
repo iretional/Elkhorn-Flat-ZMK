@@ -162,6 +162,27 @@
             layers = <0 1>;
             bindings = <&kp BSPC>;
         };
+        combo_bspc {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <15 16>;
+            layers = <0 1>;
+            bindings = <&kp BSPC>;
+        };
+        combo_ralt {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <19 20>;
+            layers = <0 1>;
+            bindings = <&kp RALT>;
+        };
+        combo_rctrl {
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+            key-positions = <20 21>;
+            layers = <0 1>;
+            bindings = <&kp RCTRL>;
+        };
     };
 
     
@@ -183,10 +204,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |
 */
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&kp LCTRL &hm GU A  &hm AL S  &hm CT D  &hm SH F  &kp G         &kp H     &hm SH J &hm CT K  &hm AL L  &hm RAL SM &hm RCT SQT
-&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp DEL
-          &none     &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &td_3t10  &kp RET   &kp BSPC  &none
+&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &none
+&kp LCTRL &hm GU A  &hm AL S  &hm CT D  &hm SH F  &kp G         &kp H     &hm SH J  &hm CT K  &hm AL L  &kp SM    &kp LALT
+&kp LSH   &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &none
+          &none     &kp LALT  &kp SPACE &td_1t9   &mo 2         &mo 4     &td_3t10  &kp RET   &kp SH    &none
             >;
         };
 
@@ -198,10 +219,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp GRAVE &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp F1    &kp F2    &kp F3    &kp F4    &kp MINUS &trans
-&trans    &kp N6    &hm AL N7 &hm CT N8 &hm SH N9 &kp KP_N0      &kp F5    &hm SH F6 &hm CT F7 &hm AL F8 &hm RAL EQUAL &trans
-&trans    &kp KDIV  &kp KMUL  &plseql   &minbar   &kp KP_DOT     &kp F9    &kp F10   &kp F11   &kp F12   &kp BSLH  &trans
-          &kp CAPS  &kp KPNL  &kp SPACE &trans    &trans         &trans    &trans    &kp KRET  &trans    &none
+&kp CAPS  &kp KDIV  &kp N7    &kp N8    &kp N9    &minbar       &kp LPAR  &kp RPAR  &kp LT    &kp GT    &kp P     &trans
+&kp GRAVE &kp KMUL  &kp N4    &kp N5    &kp N6    &plseql       &kp LBRC  &kp RBRC  &kp LT    &kp GT    &kp SQT   &kp RCTRL
+&kp KPNL  &kp KP_DOT &kp N1   &kp N2    &kp N3    &kp KP_N0     &kp LBKT  &kp RBKT  &kp M     &kp DOT   &kp BSLH  &trans
+          &trans    &trans    &kp SPACE &trans    &trans        &trans    &trans    &kp KRET  &trans    &none
             >;
         };
         
@@ -214,10 +235,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |    
 */
             bindings = <
-&kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y       &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-&hm RCT SQT &hm RAL SM &hm AL L &hm CT K &hm SH J &kp H      &kp H     &kp J     &kp K     &kp L     &kp SM  &kp SQT
-&kp DEL   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B       &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
-          &trans  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &trans    &trans   &trans
+&trans    &none     &kp HOME  &kp UP    &kp END   &kp PG_UP     &kp F1    &kp F2    &kp F3    &kp F4    &kp MINUS &trans
+&trans    &none     &kp LEFT  &kp DOWN  &kp RIGHT &kp PG_DN     &kp F5    &kp F6    &kp F7    &kp F8    &kp EQUAL &trans
+&trans    &none     &none     &none     &none     &none         &kp F9    &kp F10   &kp F11   &kp F12   &kp BSLH  &trans
+          &trans    &trans    &trans    &trans    &trans        &trans    &trans    &kp RET   &kp LSH   &trans
             >;
         };
         
@@ -260,10 +281,10 @@
 //               | GUI  | LWR  | GUI  | LWR  | SPC  |       | ENT  | RSE  | ALT  | LWR  | SPC  |   
 */
             bindings = <
-&kp TAB   &none     &none     &none     &none     &none        &kp LPAR  &kp RPAR  &kp LBKT  &kp RBKT  &kp P     &kp BSPC
-&kp LCTRL &none     &kp ESC   &kp RET   &kp BSPC  &kp DEL      &kp LBRC  &kp RBRC  &kp LT    &kp GT    &kp SEMI  &kp SQT
-&kp LSH   &none     &none     &none     &none     &none        &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
-          &none     &none     &none     &trans    &trans       &trans    &trans    &kp RET   &kp LSH   &trans
+&kp TAB   &kp P     &kp O     &kp I     &kp U     &kp Y       &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+&hm RCT SQT &hm RAL SM &hm AL L &hm CT K &hm SH J &kp H      &kp H     &kp J     &kp K     &kp L     &kp SM  &kp SQT
+&kp DEL   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B       &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &trans
+          &trans  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &trans    &trans   &trans
             >;
         };
 
