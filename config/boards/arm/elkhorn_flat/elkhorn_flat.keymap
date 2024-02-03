@@ -67,6 +67,18 @@
 
             bindings = <&kp>, <&kp>;
         };
+        sht: sticky-hold-tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_STICKY";
+            #binding-cells = <2>;
+            
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+            quick-tap-ms = <0>;
+            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+
+            bindings = <&sk>, <&kp>;
+        };
 
 
         td_1t9: tap_dance_one_to_nine_layer {
@@ -169,20 +181,6 @@
             layers = <0 1>;
             bindings = <&kp BSPC>;
         };
-        combo_ralt {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <19 20>;
-            layers = <0 1>;
-            bindings = <&kp RALT>;
-        };
-        combo_rctrl {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <20 21>;
-            layers = <0 1>;
-            bindings = <&kp RCTRL>;
-        };
     };
 
     
@@ -220,7 +218,7 @@
 */
             bindings = <
 &kp CAPS  &kp KDIV  &kp N7    &kp N8    &kp N9    &minbar       &kp LPAR  &kp RPAR  &kp LT    &kp GT    &kp P     &trans
-&kp GRAVE &kp KMUL  &kp N4    &kp N5    &kp N6    &plseql       &kp LBRC  &kp RBRC  &kp LT    &kp GT    &kp SQT   &kp RCTRL
+&kp GRAVE &kp KMUL  &sht AL N4 &sht CT N5 &sht SH N6 &plseql       &kp LBRC  &kp RBRC  &kp LT    &kp GT    &kp SQT   &kp RCTRL
 &kp KPNL  &kp KP_DOT &kp N1   &kp N2    &kp N3    &kp KP_N0     &kp LBKT  &kp RBKT  &kp M     &kp DOT   &kp BSLH  &trans
           &trans    &trans    &kp SPACE &trans    &trans        &trans    &trans    &kp KRET  &trans    &none
             >;
