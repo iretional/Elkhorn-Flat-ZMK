@@ -174,13 +174,6 @@
             layers = <0 1>;
             bindings = <&kp BSPC>;
         };
-        combo_bspc {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <15 16>;
-            layers = <0 1>;
-            bindings = <&kp BSPC>;
-        };
     };
 
     
