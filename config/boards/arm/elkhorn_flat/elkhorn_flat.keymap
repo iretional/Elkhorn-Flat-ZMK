@@ -11,25 +11,29 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
 
-#define LSH LSHFT 
 #define SH LSHFT 
+#define SHFT LSHFT 
 #define CT LCTRL 
+#define CTRL LCTRL
 #define RCT RCTRL 
 #define AL LALT
+#define ALT LALT
 #define RAL RALT
 #define GU LGUI
 #define SPC SPACE
+#define BPC BACKSPACE
 
 #define VMT C_MUTE
 #define VDN C_VOL_DN
 #define VUP C_VOL_UP
 
-#define KPNL KP_NUM
 #define KRET KP_ENTER
 #define KMUL KP_MULTIPLY
+#define KMIN KP_MINUS
 #define KDIV KP_DIVIDE
 #define KPLS KP_PLUS
 #define KCOM KP_COMMA
+#define KDOT KP_DOT
 
 #define SM SEMI
 
@@ -40,6 +44,34 @@
 #define COMBO_TERM_FAST 35
 #define COMBO_TERM_SLOW 40
 #define COMBO_PRIOR_IDLE 100
+
+#define MOUSE_MOVE_NEG_DEFAULT -300
+#define MOUSE_MOVE_DEFAULT 300
+#define MOUSE_MOVE_NEG_FAST -3000 
+#define MOUSE_MOVE_FAST 3000 
+
+#define CL CAPS
+
+#define VDN C_VOL_DN
+#define VUP C_VOL_UP
+#define CALC C_AL_CALC
+
+#define MOVE_U MOVE_VERT(-200)
+#define MOVE_D MOVE_VERT(200)
+#define MOVE_L MOVE_HOR(-200)
+#define MOVE_R MOVE_HOR(200)
+#define MOVE_U9 MOVE_VERT(-900)
+#define MOVE_D9 MOVE_VERT(900)
+#define MOVE_L9 MOVE_HOR(-900)
+#define MOVE_R9 MOVE_HOR(900)
+#define SCL_U SCROLL_VERT(17)
+#define SCL_D SCROLL_VERT(-17)
+#define SCL_L SCROLL_HOR(-17)
+#define SCL_R SCROLL_HOR(17)
+#define SCL_U12 SCROLL_VERT(18)
+#define SCL_D12 SCROLL_VERT(-18)
+#define SCL_L12 SCROLL_HOR(-18)
+#define SCL_R12 SCROLL_HOR(18)
 
 
 &mt {
@@ -320,7 +352,7 @@
             bindings = <
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &BTC0  &BTC1  &BTC2  &BTC3  &BTC4    &BTAllClr
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
+&trans    &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
           &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
             >;
         };
@@ -350,7 +382,7 @@
             bindings = <
 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &BTC0  &BTC1  &BTC2  &BTC3  &BTC4    &BTAllClr
 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
-&kp LSH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
+&kp SHFT   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
           &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
             >;
         };
