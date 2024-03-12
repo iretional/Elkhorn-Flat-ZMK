@@ -129,6 +129,22 @@
 
             bindings = <&sk>, <&kp>;
         };
+
+        minbar: mod_morph_minus_underbar {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_MINUS_UNDERBAR";
+            #binding-cells = <0>;
+            bindings = <&kp KP_MINUS>, <&kp UNDERSCORE>;
+            mods = <(MOD_LSFT)>;
+        };
+        plseql: mod_morph_plus_equal {
+            compatible = "zmk,behavior-mod-morph";
+            label="MOD_MORPH_PLUS_EQUAL";
+            #binding-cells = <0>;
+            bindings = <&kp KP_PLUS>, <&kp EQUAL>;
+            mods = <(MOD_LSFT)>;
+        };
+
         
         td_cpnm: tap_dance_caps_kpnum{
             compatible = "zmk,behavior-tap-dance";
