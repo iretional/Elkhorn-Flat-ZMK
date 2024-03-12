@@ -81,6 +81,7 @@
     release-after-ms = <5000>;
     quick-release;
 };
+
 / {
     chosen {
         zmk,matrix_transform = &default_transform;
@@ -259,7 +260,7 @@
             bindings = <&kp KP_DIVIDE>;
         };
     };
-
+};
     
 
 
