@@ -235,6 +235,11 @@
         ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 3  &bt BT_CLR >;)
         ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 4  &bt BT_CLR >;)
         
+
+        ZMK_MACRO(CAPT ,wait-ms=<30>; tap-ms=<30>; bindings= 
+            <&macro_press &kp LSHFT>, <&macro_press &kp LGUI>
+            , <&macro_tap &kp S>
+            , <&macro_release &kp LSHFT>, <&macro_release &kp LGUI>;)
     };
 
      combos {
