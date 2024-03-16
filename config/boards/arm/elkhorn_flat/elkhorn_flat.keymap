@@ -331,7 +331,7 @@
 &trans    &kp PG_UP &kp HOME  &kp UP    &kp END   &mm_mhu      &trans    &kp F7    &kp F8    &kp F9    &kp F12   &trans
 &kp LGUI  &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT &mm_mhd      &trans    &kp F4    &kp F5    &kp F6    &kp F11   &trans
 &kp SHFT  &trans    &mkp LCLK &mkp LCLK &mkp MCLK &mkp RCLK    &trans    &kp F1    &kp F2    &kp F3    &kp F10   &trans
-          &CAPT     &trans    &trans    &trans    &trans       &trans    &trans    &trans    &trans    &trans
+          &CAPT     &trans    &trans    &hd 2 DEL &trans       &trans    &trans    &trans    &trans    &trans
             >;
         };
 
