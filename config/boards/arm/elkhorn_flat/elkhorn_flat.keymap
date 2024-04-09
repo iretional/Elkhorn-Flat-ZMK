@@ -272,20 +272,6 @@
             layers = <0 1>;
             bindings = <&kp BSPC>;
         };
-        combo_gui {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <26 27>;
-            layers = <0 1>;
-            bindings = <&kp LGUI>;
-        };
-        combo_spc {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <27 28>;
-            layers = <0 1>;
-            bindings = <&kp SPC>;
-        };
         
         combo_mul {
             timeout-ms = <COMBO_TERM_FAST>;
