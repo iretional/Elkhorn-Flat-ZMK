@@ -285,7 +285,7 @@
 
         left_lwr_layer { //1
             bindings = <
-&kp GRAVE &KP MINUS &kp N7    &kp N8    &kp N9    &kp EQUAL     &kp LPAR  &kp RPAR  &kp LT    &kp GT    &kp P     &kp BPC
+&kp GRAVE &kp MINUS &kp N7    &kp N8    &kp N9    &kp EQUAL     &kp LPAR  &kp RPAR  &kp LT    &kp GT    &kp P     &kp BPC
 &trans    &kp PLUS  &kp N4    &kp N5    &kp N6    &kp KDOT      &kp LBRC  &kp RBRC  &kp K     &kp L     &kp SEMI  &kp SQT
 &trans    &kp COMMA &kp N1    &kp N2    &kp N3    &kp KP_N0     &kp LBKT  &kp RBKT  &kp M     &trans    &kp FSLH  &kp BSLH
           &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &trans    &trans
