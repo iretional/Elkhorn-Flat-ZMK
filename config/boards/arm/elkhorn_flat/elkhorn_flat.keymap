@@ -143,6 +143,7 @@
         // Split Heart's number row (` 1-0 -) has no row here: the digits and - are on layer 1, ` is at 11 on layer 1.
         // Split Heart's left-thumb LCTRL and right-thumb RSHIFT have no key; use the home-row mods (F/J, D/K).
         default_layer {
+            display-name = "Base";
             bindings = <
 &kp TAB       &kp Q         &kp W         &kp E         &kp R         &kp T           &kp Y          &kp U          &kp I          &kp O          &kp P          &kp EQUAL
 &lt 4 DEL     &kp A         &hml LALT S   &hml LSHIFT D &hml LCTRL F  &kp G           &kp H          &hmr LCTRL J   &hmr RSHIFT K  &hmr LALT L    &kp SLASH      &kp SEMI
@@ -154,6 +155,7 @@
         // Moved from the number row: / at 6, * at 18, comma at 30, F10-F12 at 10/22/34, ` at 11.
         // [ ] are on the base layer (44, 45); = is on the base layer (11).
         number_layer {  // 1
+            display-name = "Number";
             bindings = <
 &kp LBRC      &kp RBRC      &kpn7         &kpn8         &kpn9         &kpminus        &kp KP_DIVIDE  &kp F7         &kp F8         &kp F9         &kp F12        &kp GRAVE
 &kp LPAR      &kp RPAR      &kpn4         &kpn5         &kpn6         &kpplus         &kp KP_MULTIPLY &kp F4        &kp F5         &kp F6         &kp F11        &none
@@ -164,6 +166,7 @@
 
         // Moved from the number row: PgUp at 1, PgDn at 25, fast mouse-up at 7, Num Lock at 11, Print Screen at 36.
         navigation_layer { // 2
+            display-name = "Nav";
             bindings = <
 &kp CAPS      &kp PG_UP     &kp HOME      &kp UP        &kp END       &msc SCRL_UP    &none              &mmv MOVE_Y(-1500) &mmv MOVE_Y(-600)  &none              &none              &kp KP_NUM
 &trans        &tdmb45       &kp LEFT      &kp DOWN      &kp RIGHT     &msc SCRL_DOWN  &mmv MOVE_X(-1500) &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)   &mmv MOVE_X(1500)  &none
@@ -176,11 +179,13 @@
         // Bluetooth profiles 0-4 and BT_CLR are on the top row (6-11), where Split Heart had them on its number row.
         // Positions 12 and 23 enter the bootloader. It runs on the half that is pressed, so each half has one.
         // BT_CLR_ALL (position 33) has no used key around it, so it can't be hit by reaching for another key.
-        // Not carried over: the mirrored number row, backlight keys (no backlight) and Studio unlock (Studio not enabled).
+        // Position 22 = unlock ZMK Studio for editing.
+        // Not carried over: the mirrored number row and backlight keys (no backlight).
         system_layer { // 3
+            display-name = "System";
             bindings = <
 &kp EQUAL     &kp P         &kp O         &kp I         &kp U         &kp Y           &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR
-&bootloader   &kp SLASH     &kp L         &kp K         &kp J         &kp H           &kp C_MUTE     &kp C_VOL_UP   &kp C_VOL_DN   &none          &none          &bootloader
+&bootloader   &kp SLASH     &kp L         &kp K         &kp J         &kp H           &kp C_MUTE     &kp C_VOL_UP   &kp C_VOL_DN   &none          &studio_unlock &bootloader
 &kp LANG2     &kp SQT       &kp DOT       &kp M         &kp N         &kp B           &none          &none          &none          &bt BT_CLR_ALL &none          &kp BSLH
               &kp LANG1     &kp COMMA     &trans        &trans        &trans          &trans         &trans         &trans         &none          &none
             >;
@@ -188,6 +193,7 @@
 
         // Not carried over: the mirrored number row and Split Heart's thumb LANG1 (key 55).
         mirror_layer { // 4
+            display-name = "Mirror";
             bindings = <
 &kp EQUAL     &kp P         &kp O         &kp I         &kp U         &kp Y           &kp T          &kp R          &kp E          &kp W          &kp Q          &kp TAB
 &trans        &kp SLASH     &hml LALT L   &hml LSHIFT K &hml LCTRL J  &kp H           &kp G          &hmr LCTRL F   &hmr RSHIFT D  &hmr LALT S    &kp A          &kp ESC
@@ -198,6 +204,7 @@
 
         // Moved from the number row: PgUp at 13, PgDn at 25, Num Lock at 11, Print Screen at 36.
         sub_navigation_layer { // 5
+            display-name = "Sub nav";
             bindings = <
 &kp CAPS      &kp DEL       &kp HOME      &kp UP        &kp END       &msc SCRL_UP    &none          &none          &none          &none          &none          &kp KP_NUM
 &trans        &kp PG_UP     &kp LEFT      &kp DOWN      &kp RIGHT     &msc SCRL_DOWN  &none          &none          &kp UP         &none          &none          &none

@@ -1,24 +1,18 @@
 # This file generates the GitHub Actions matrix.
-# For simple board + shield combinations, add them to the top level board and
-# shield arrays, for more control, add individual board + shield combinations
-# to the `include` property. You can also use the `cmake-args` property to
-# pass flags to the build command and `artifact-name` to assign a name to
-# distinguish build outputs from each other:
-#
-# board: [ "nice_nano_v2" ]
-# shield: [ "elkhorn_flat_left", "elkhorn_flat_right" ]
-# include:
-#   - board: bdn9_rev2
-#   - board: nice_nano_v2
-#     shield: reviung41
-#   - board: nice_nano_v2
-#     shield: elkhorn_flat_left
-#     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
-#     artifact-name: elkhorn_flat_left_with_logging
-#
+# See https://zmk.dev/docs/user-setup for the format.
 ---
 include:
+  # The left half is the USB/BLE central: Studio RPC lives here only.
   - board: elkhorn_flat_v1_left
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+
+  # The right half remains a BLE peripheral.
   - board: elkhorn_flat_v1_right
 
-  
+  # Flash these to both halves to clear pairing and settings (including
+  # keymap changes saved from Studio), then flash the normal firmware.
+  - board: elkhorn_flat_v1_left
+    shield: settings_reset
+  - board: elkhorn_flat_v1_right
+    shield: settings_reset
