@@ -3,339 +3,206 @@
 * Copyright (c) 2021 Darryl deHaan
 * SPDX-License-Identifier: MIT
 *
+* Layout ported from the Split Heart keymap (iretional/zmk-config).
+* Split Heart has 60 keys and Elkhorn Flat has 46, so:
+*   - Split Heart rows 2-4 (Tab/QWERTY, home, bottom) are Elkhorn rows 1-3.
+*   - Split Heart's number row has no Elkhorn row; what it held is moved
+*     onto free keys in each layer (see the notes above each layer).
+*   - Bottom row: Split Heart keys 48 49 52 53 54 -> Elkhorn 36-40,
+*     keys 57 58 56 50 51 -> Elkhorn 41-45. Keys 55 and 59 have no place.
 */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/mouse.h>
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20  // Scroll speed; ZMK default is 10
+#include <dt-bindings/zmk/pointing.h>
 
-#define SH LSHFT 
-#define SHFT LSHFT 
-#define CT LCTRL 
-#define CTRL LCTRL
-#define RCT RCTRL 
-#define AL LALT
-#define ALT LALT
-#define RAL RALT
-#define GU LGUI
-#define SPC SPACE
-#define BPC BACKSPACE
-
-#define VMT C_MUTE
-#define VDN C_VOL_DN
-#define VUP C_VOL_UP
-
-#define KRET KP_ENTER
-#define KMUL KP_MULTIPLY
-#define KMIN KP_MINUS
-#define KDIV KP_DIVIDE
-#define KPLS KP_PLUS
-#define KCOM KP_COMMA
-#define KDOT KP_DOT
-#define KEQL KP_EQUAL
-
-#define SM SEMI
-
-#define HM_TAPPING_TERM 300
-#define HM_TAPPING_TERM_FAST 200
-#define HM_PRIOR_IDLE 0
-
-#define COMBO_TERM_FAST 35
-#define COMBO_TERM_SLOW 40
-#define COMBO_PRIOR_IDLE 100
-
-#define MOUSE_MOVE_NEG_DEFAULT -300
-#define MOUSE_MOVE_DEFAULT 300
-#define MOUSE_MOVE_NEG_FAST -3000 
-#define MOUSE_MOVE_FAST 3000 
-
-#define CL CAPS
-
-#define VDN C_VOL_DN
-#define VUP C_VOL_UP
-#define CALC C_AL_CALC
-
-#define MOVE_U MOVE_VERT(-200)
-#define MOVE_D MOVE_VERT(200)
-#define MOVE_L MOVE_HOR(-200)
-#define MOVE_R MOVE_HOR(200)
-#define MOVE_U9 MOVE_VERT(-900)
-#define MOVE_D9 MOVE_VERT(900)
-#define MOVE_L9 MOVE_HOR(-900)
-#define MOVE_R9 MOVE_HOR(900)
-#define SCL_U SCROLL_VERT(17)
-#define SCL_D SCROLL_VERT(-17)
-#define SCL_L SCROLL_HOR(-17)
-#define SCL_R SCROLL_HOR(17)
-#define SCL_U12 SCROLL_VERT(18)
-#define SCL_D12 SCROLL_VERT(-18)
-#define SCL_L12 SCROLL_HOR(-18)
-#define SCL_R12 SCROLL_HOR(18)
-
-
-&mt {
-    tapping-term-ms = <100>;
-}; 
-&sk {
-    release-after-ms = <5000>;
-    quick-release;
-};
-
-/ {
-    chosen {
-        zmk,matrix_transform = &default_transform;
-    };
-};
-
+#define KEYS_L 0 1 2 3 4 5      12 13 14 15 16 17   24 25 26 27 28 29
+#define KEYS_R 6 7 8 9 10 11    18 19 20 21 22 23   30 31 32 33 34 35
+#define THUMBS 36 37 38 39 40   41 42 43 44 45
 
 / {
     behaviors {
-        hd: hold_mod {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_MOD";
-            #binding-cells = <2>;
-            
-            flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick-tap-ms = <0>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
-
-            bindings = <&mo>, <&kp>;
+        kpn1: kpn1_shiftn1 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N1>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn2: kpn2_shiftn2 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N2>, <&kp AT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn3: kpn3_shiftn3 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N3>, <&kp POUND>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn4: kpn4_shiftn4 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N4>, <&kp DLLR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn5: kpn5_shiftn5 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N5>, <&kp PRCNT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn6: kpn6_shiftn6 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N6>, <&kp CARET>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn7: kpn7_shiftn7 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N7>, <&kp AMPS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn8: kpn8_shiftn8 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N8>, <&kp ASTRK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn9: kpn9_shiftn9 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N9>, <&kp LPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        kpn0: kpn0_shiftn0 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        kpminus: kpminus_under {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_MINUS>, <&kp UNDERSCORE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
 
-        hm: homerow_mods {
+        kpplus: kpplus_equal {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_PLUS>, <&kp EQUAL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAB_HOME_ROW";
             #binding-cells = <2>;
-            
             flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick-tap-ms = <0>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
-
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = < KEYS_R THUMBS >; // List of keys on the right side of the keyboard
+            hold-trigger-on-release;
         };
-        sht: sticky-hold-tap {
+        hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_STICKY";
             #binding-cells = <2>;
-            
             flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-            quick-tap-ms = <0>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
-
-            bindings = <&sk>, <&kp>;
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = < KEYS_L THUMBS >; // List of keys on the left side of the keyboard
+            hold-trigger-on-release;
         };
 
-
-        
-        
-        mm_mvu: mod_morph_mvu{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MVU";
+        tdmb45: tap_dance_mouse_m45 {
+            compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            bindings = <&mmv MOVE_VERT(MOUSE_MOVE_NEG_DEFAULT)>,  <&mmv MOVE_VERT(MOUSE_MOVE_NEG_FAST)>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mvd: mod_morph_mvd{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MVD";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_VERT(MOUSE_MOVE_DEFAULT)>,  <&mmv MOVE_VERT(MOUSE_MOVE_FAST)>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mvl: mod_morph_mvl{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MVL";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_HOR(MOUSE_MOVE_NEG_DEFAULT)>,  <&mmv MOVE_HOR(MOUSE_MOVE_NEG_FAST)>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mvr: mod_morph_mvr{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MVR";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_HOR(MOUSE_MOVE_DEFAULT)>,  <&mmv MOVE_HOR(MOUSE_MOVE_FAST)>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mhu: mod_morph_mhu{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MHU";
-            #binding-cells = <0>;
-            bindings = <&mwh SCL_U>,  <&mwh SCL_U12>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mhd: mod_morph_mhd{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MHD";
-            #binding-cells = <0>;
-            bindings = <&mwh SCL_D>,  <&mwh SCL_D12>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mhl: mod_morph_mhl{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MHL";
-            #binding-cells = <0>;
-            bindings = <&mwh SCL_L>,  <&mwh SCL_L12>;
-            mods = <(MOD_LALT)>;
-        };
-        mm_mhr: mod_morph_mhr{
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_MORPH_MHR";
-            #binding-cells = <0>;
-            bindings = <&mwh SCL_R>,  <&mwh SCL_R12>;
-            mods = <(MOD_LALT)>;
-        };
-    };
-    
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        left_tri_layer {
-            if-layers = <1 2>;
-            then-layer = <5>;
-        };
-        right_tri_layer {
-            if-layers = <3 4>;
-            then-layer = <6>;
+            tapping-term-ms = <180>;
+            bindings = <&mkp MB4>, <&mkp MB5>;
         };
     };
 
-    macros {
-        ZMK_MACRO(BTAllClr, wait-ms=<1>; tap-ms=<1>; bindings=<
-            &bt BT_SEL 0  &bt BT_CLR &bt BT_SEL 1  &bt BT_CLR &bt BT_SEL 2  &bt BT_CLR 
-            &bt BT_SEL 3  &bt BT_CLR &bt BT_SEL 4  &bt BT_CLR >;)
-            
-        ZMK_MACRO(BTC0, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 0  &bt BT_CLR >;)
-        ZMK_MACRO(BTC1, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 1  &bt BT_CLR >;)
-        ZMK_MACRO(BTC2, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 2  &bt BT_CLR >;)
-        ZMK_MACRO(BTC3, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 3  &bt BT_CLR >;)
-        ZMK_MACRO(BTC4, wait-ms=<1>; tap-ms=<1>; bindings=< &bt BT_SEL 4  &bt BT_CLR >;)
-        
-
-        ZMK_MACRO(CAPT ,wait-ms=<30>; tap-ms=<30>; bindings= 
-            <&macro_press &kp LSHFT>, <&macro_press &kp LGUI>
-            , <&macro_tap &kp S>
-            , <&macro_release &kp LSHFT>, <&macro_release &kp LGUI>;)
-    };
-
-     combos {
-        compatible = "zmk,combos";
-        combo_esc {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <2 3>;
-            layers = <0 1 3>;
-            bindings = <&kp ESC>;
-        };
-        combo_del {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <3 4>;
-            layers = <0 1 3>;
-            bindings = <&kp DEL>;
-        };
-        combo_enter {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <14 15>;
-            layers = <0 1 3>;
-            bindings = <&kp RET>;
-        };
-        combo_bspc {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <15 16>;
-            layers = <0 1 3>;
-            bindings = <&kp BSPC>;
-        };
-        
-        combo_mul {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <13 14>;
-            layers = <1 3>;
-            bindings = <&kp KP_MULTIPLY>;
-        };
-        combo_div {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            key-positions = <1 2>;
-            layers = <1 3>;
-            bindings = <&kp KP_DIVIDE>;
-        };
-    };
-    
-
+/*
+ 0  1  2  3  4  5     6  7  8  9 10 11
+12 13 14 15 16 17    18 19 20 21 22 23
+24 25 26 27 28 29    30 31 32 33 34 35
+   36 37 38 39 40    41 42 43 44 45
+*/
 
     keymap {
         compatible = "zmk,keymap";
-        
+
+        // Split Heart's number row (` 1-0 -) has no row here: the digits and - are on layer 1, ` is at 11 on layer 1.
+        // Split Heart's left-thumb LCTRL and right-thumb RSHIFT have no key; use the home-row mods (F/J, D/K).
         default_layer {
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P     &none
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SM    &kp SQT
-&kp SHFT  &kp COMMA &kp Z     &kp X     &kp C     &kp V         &kp B     &kp N     &kp M     &kp DOT   &kp FSLH  &kp BSLH
-          &kp LGUI  &kp LALT  &kp SPC   &hd 1 BPC &hd 2 RET     &hd 4 ESC &hd 3 RET &kp SHFT  &kp RALT  &kp RCTRL
+&kp TAB       &kp Q         &kp W         &kp E         &kp R         &kp T           &kp Y          &kp U          &kp I          &kp O          &kp P          &kp EQUAL
+&lt 4 DEL     &kp A         &hml LALT S   &hml LSHIFT D &hml LCTRL F  &kp G           &kp H          &hmr LCTRL J   &hmr RSHIFT K  &hmr LALT L    &kp SLASH      &kp SEMI
+&kp LSHIFT    &kp Z         &kp X         &kp C         &kp V         &kp B           &kp N          &kp M          &kp COMMA      &kp DOT        &kp SQT        &kp LANG2
+              &kp LGUI      &kp LALT      &lt 1 BSPC    &kp SPACE     &lt 2 ESC       &lt 3 ENTER    &kp SPACE      &lt 5 LANG1    &kp LBKT       &kp RBKT
             >;
         };
 
-        left_lwr_layer { //1
+        // Moved from the number row: / at 6, * at 18, comma at 30, F10-F12 at 10/22/34, ` at 11.
+        // [ ] are on the base layer (44, 45); = is on the base layer (11).
+        number_layer {  // 1
             bindings = <
-&kp GRAVE &kp MINUS &kp N7    &kp N8    &kp N9    &kp EQUAL     &kp LPAR  &kp RPAR  &kp LT    &kp GT    &kp P     &kp BPC
-&trans    &kp PLUS  &kp N4    &kp N5    &kp N6    &kp KDOT      &kp LBRC  &kp RBRC  &kp K     &kp L     &kp SEMI  &kp SQT
-&trans    &kp COMMA &kp N1    &kp N2    &kp N3    &kp KP_N0     &kp LBKT  &kp RBKT  &kp M     &trans    &kp FSLH  &kp BSLH
-          &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &trans    &trans
-            >;
-        };
-        
-        left_rse_layer { //2
-            bindings = <
-&kp CAPS  &kp PG_UP &kp HOME  &kp UP    &kp END   &mm_mhu      &trans    &kp F7    &kp F8    &kp F9    &kp F12   &trans
-&kp KP_NUM &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT &mm_mhd      &trans    &kp F4    &kp F5    &kp F6    &kp F11   &trans
-&trans    &trans    &kp DEL   &mkp LCLK &mkp MCLK &mkp RCLK    &trans    &kp F1    &kp F2    &kp F3    &kp F10   &trans
-          &CAPT     &trans    &trans    &trans    &trans       &trans    &trans    &trans    &trans    &trans
+&kp LBRC      &kp RBRC      &kpn7         &kpn8         &kpn9         &kpminus        &kp KP_DIVIDE  &kp F7         &kp F8         &kp F9         &kp F12        &kp GRAVE
+&kp LPAR      &kp RPAR      &kpn4         &kpn5         &kpn6         &kpplus         &kp KP_MULTIPLY &kp F4        &kp F5         &kp F6         &kp F11        &none
+&kp LT        &kp GT        &kpn1         &kpn2         &kpn3         &kp ENTER       &kp COMMA      &kp F1         &kp F2         &kp F3         &kp F10        &kp BSLH
+              &kpn0         &kp KP_DOT    &trans        &trans        &trans          &trans         &trans         &trans         &none          &none
             >;
         };
 
-        right_lwr_layer { //3
+        // Moved from the number row: PgUp at 1, PgDn at 25, fast mouse-up at 7, Num Lock at 11, Print Screen at 36.
+        navigation_layer { // 2
             bindings = <
-&kp GRAVE &kp KMIN &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KEQL      &kp LPAR  &kp RPAR  &kp LT    &kp GT    &kp P     &kp BPC
-&trans    &kp KPLS &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KDOT      &kp LBRC  &kp RBRC  &kp K     &kp L     &kp SEMI  &kp SQT
-&trans    &kp KCOM &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_N0     &kp LBKT  &kp RBKT  &kp M     &trans    &kp FSLH  &kp BSLH
-          &trans    &trans    &trans    &trans    &trans        &trans    &trans    &trans    &trans    &trans
-            >;
-        };
-        
-        right_rse_layer { //4
-            bindings = <
-   &trans    &mmv MOVE_U9 &mm_mhu   &mm_mvu      &mm_mhd   &mmv MOVE_D9      &kp F7    &kp F8    &kp F9    &kp F12   &kp P     &kp EQUAL
-   &trans    &mmv MOVE_L9 &mm_mvl   &mm_mvd      &mm_mvr   &mmv MOVE_R9      &kp F4    &kp F5    &kp F6    &kp F11   &kp SEMI  &kp SQT
-   &trans    &trans       &mm_mhl   &mmv MOVE_D9 &mm_mhr   &none             &kp F1    &kp F2    &kp F3    &kp F10   &kp FSLH  &kp RCTRL
-             &trans       &mkp LCLK &mkp LCLK    &mkp RCLK &mkp MCLK         &trans    &trans    &trans    &trans    &trans
+&kp CAPS      &kp PG_UP     &kp HOME      &kp UP        &kp END       &msc SCRL_UP    &none              &mmv MOVE_Y(-1500) &mmv MOVE_Y(-600)  &none              &none              &kp KP_NUM
+&trans        &tdmb45       &kp LEFT      &kp DOWN      &kp RIGHT     &msc SCRL_DOWN  &mmv MOVE_X(-1500) &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)   &mmv MOVE_X(1500)  &none
+&trans        &kp PG_DN     &mkp MB1      &mkp MB2      &mkp MB3      &kp SPACE       &none              &none              &mmv MOVE_Y(1500)  &none              &none              &none
+              &kp PSCRN     &kp DEL       &trans        &trans        &trans          &trans             &trans             &trans             &none              &none
             >;
         };
 
-        
-        left_both_layer { //5- mirror layer
+        // Hold right thumb Enter (position 41) for layer 3, then:
+        // Bluetooth profiles 0-4 and BT_CLR are on the top row (6-11), where Split Heart had them on its number row.
+        // Positions 12 and 23 enter the bootloader. It runs on the half that is pressed, so each half has one.
+        // BT_CLR_ALL (position 33) has no used key around it, so it can't be hit by reaching for another key.
+        // Not carried over: the mirrored number row, backlight keys (no backlight) and Studio unlock (Studio not enabled).
+        system_layer { // 3
             bindings = <
-                
-&mo 3      &kp P     &kp O     &kp I     &kp U     &kp Y      &kp T      &kp R      &kp E      &kp W     &kp Q     &kp TAB
-&kp SQT    &kp SEMI  &kp L     &kp K     &kp J     &kp H      &kp G      &kp F      &kp D      &kp S     &kp A     &kp LCTRL
-&kp BSLH   &kp FSLH  &kp DOT   &kp M     &kp N     &kp B      &kp V      &kp C      &kp X      &kp Z     &kp COMMA &kp LALT   
-           &kp RCTRL &kp RALT  &trans    &trans    &trans     &trans     &kp RET   &kp SPACE   &sk RSHFT &kp LGUI
+&kp EQUAL     &kp P         &kp O         &kp I         &kp U         &kp Y           &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR
+&bootloader   &kp SLASH     &kp L         &kp K         &kp J         &kp H           &kp C_MUTE     &kp C_VOL_UP   &kp C_VOL_DN   &none          &none          &bootloader
+&kp LANG2     &kp SQT       &kp DOT       &kp M         &kp N         &kp B           &none          &none          &none          &bt BT_CLR_ALL &none          &kp BSLH
+              &kp LANG1     &kp COMMA     &trans        &trans        &trans          &trans         &trans         &trans         &none          &none
             >;
         };
-        
-        right_both_layer {//6 
+
+        // Not carried over: the mirrored number row and Split Heart's thumb LANG1 (key 55).
+        mirror_layer { // 4
             bindings = <
-&kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T         &BTC0  &BTC1  &BTC2  &BTC3  &BTC4    &BTAllClr
-&kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
-&trans    &kp FSLH  &kp DOT   &kp M     &kp N     &kp B         &none     &none     &none     &none     &out OUT_BLE     &out OUT_USB     
-          &kp LGUI  &kp LALT  &kp SPACE &trans    &trans        &trans    &trans    &none     &none     &none     
+&kp EQUAL     &kp P         &kp O         &kp I         &kp U         &kp Y           &kp T          &kp R          &kp E          &kp W          &kp Q          &kp TAB
+&trans        &kp SLASH     &hml LALT L   &hml LSHIFT K &hml LCTRL J  &kp H           &kp G          &hmr LCTRL F   &hmr RSHIFT D  &hmr LALT S    &kp A          &kp ESC
+&kp LANG2     &kp SQT       &kp DOT       &kp COMMA     &kp M         &kp N           &kp B          &kp V          &kp C          &kp X          &kp Z          &kp LALT
+              &kp RBKT      &kp LBKT      &kp RSHFT     &kp SPACE     &kp ENTER       &kp LCTRL      &kp BSPC       &kp LALT       &kp ENTER      &kp LGUI
+            >;
+        };
+
+        // Moved from the number row: PgUp at 13, PgDn at 25, Num Lock at 11, Print Screen at 36.
+        sub_navigation_layer { // 5
+            bindings = <
+&kp CAPS      &kp DEL       &kp HOME      &kp UP        &kp END       &msc SCRL_UP    &none          &none          &none          &none          &none          &kp KP_NUM
+&trans        &kp PG_UP     &kp LEFT      &kp DOWN      &kp RIGHT     &msc SCRL_DOWN  &none          &none          &kp UP         &none          &none          &none
+&kp LSHFT     &kp PG_DN     &mkp MB1      &mkp MB2      &mkp MB4      &mkp MB5        &none          &kp LEFT       &kp DOWN       &kp RIGHT      &none          &none
+              &kp PSCRN     &mkp MB3      &kp DEL       &kp LC(BSPC)  &trans          &trans         &trans         &trans         &none          &none
             >;
         };
 
